@@ -138,8 +138,14 @@ public class MainFrame extends JFrame
 						e.printStackTrace();
 					}
 					  					
-					simplifiedOutput = circuit.generateSimplifiedOutput();										
-					  
+					simplifiedOutput = circuit.generateSimplifiedOutput();
+					try 
+					{
+						circuit.drawCircuit(output, "output_normal.png");
+						circuit.drawCircuit(simplifiedOutput, "output_simplified.png");
+					}
+					catch (Exception e) {}
+					
 					SeconderyFrame sec = new SeconderyFrame(path);
 	    			  
 	    			sec.setResizable(false);    			 
@@ -155,7 +161,7 @@ public class MainFrame extends JFrame
 			else if(event.getSource()==item2)
 			{
 				String cpal = new String();
-				cpal = "Programmed and Revised By: \n\nAhmed Fathy Aly - Section 1\nAhmed Fathy Abdel Mageed - Section 1\nAhmed Fathy Hussain Fathy - Section 1\nAhmed Ra'fat Elsayed Al Alfy - Section 1\nMohamed Ahmed Anwer - Section 7\n\n2nd year Electrical - Logic Project\n© 2013-2014";
+				cpal = "Programmed and Revised By: \n\nAhmed Fathy Aly - Section 1\nAhmed Fathy Abdel Mageed - Section 1\nAhmed Fathy Hussain Fathy - Section 1\nAhmed Ra'fat Elsayed Al Alfy - Section 1\nMohamed Ahmed Anwer - Section 7\n\n2nd year Electrical - Logic Project\nï¿½ 2013-2014";
 				JOptionPane.showMessageDialog(null, cpal);
 			}
 			else if(event.getSource()==item3)

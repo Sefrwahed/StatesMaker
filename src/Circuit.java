@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author A.Aly
@@ -659,5 +662,54 @@ public class Circuit
 					
 			gates.add(and);
 		}
-
+	  
+	  public void drawCircuit(String output, String output_png) {
+		  GraphViz gv = new GraphViz();
+	      gv.addln(gv.start_graph());
+	      gv.addln("rankdir=LR;");
+	      String[] lines = output.split(System.getProperty("line.separator"));
+	      int max_lines = lines.length;
+	      Matcher matcher = Pattern.compile("STATES_NO:([0-9]+)").matcher(lines[0]);
+	      matcher.find();
+	      String num_states = matcher.group(1);
+	      gv.addln("size=\"" + num_states + "\";");
+	      gv.addln("node [shape = circle];");
+	      matcher = Pattern.compile("(.+):").matcher(lines[3]);
+    	  matcher.find();
+	      for (int i = 3; i < max_lines; ) {
+	    	  String beginning = matcher.group(1);
+	    	  i++;
+	    	  while (i < max_lines) {
+	    		  matcher = Pattern.compile("(.+):").matcher(lines[i]);
+		    	  if (matcher.find())
+		    		  break;
+		    	  String[] splitted_line = lines[i].split("->");
+		    	  // splitted_line[0] has inputs, splitted_line[1] has outputs and next state.
+		    	  String label = "";
+		    	  Pattern p = Pattern.compile("([^=]+)=(0|1)");
+		    	  matcher = p.matcher(splitted_line[0]);
+		    	  while (matcher.find()) {
+		    		  label += matcher.group(2);
+		    	  }
+		    	  matcher = p.matcher(splitted_line[1]);
+		    	  if (matcher.find()) {
+		    		  label += "/";
+		    		  label += matcher.group(2);
+		    		  while (matcher.find()) {
+		    			  label += matcher.group(2);
+		    		  }
+		    	  }
+		    	  String state_movement = beginning + " -> ";
+		    	  matcher = Pattern.compile("(S[0-9]+)").matcher(splitted_line[1]);
+		    	  matcher.find();
+		    	  state_movement += matcher.group(1);
+		    	  gv.addln(state_movement + " [ label = \"" + label + "\" ]");
+		    	  i++;
+	    	  }
+	      }
+	      gv.addln(gv.end_graph());
+	      
+	      File out = new File(output_png);
+	      gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), "png" ), out );
+	  }
 }
