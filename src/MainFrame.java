@@ -32,6 +32,7 @@ public class MainFrame extends JFrame
 	private JButton item3;	
 	private JButton item4;
 	private JButton item8;
+	private JButton item9;
 	private JLabel  item5;
 	private JPanel  item6;
 	private JPanel  item7;
@@ -45,7 +46,7 @@ public class MainFrame extends JFrame
 		super("States Creator");		
 		setLayout(new GridBagLayout());
 		
-		Dimension frameSize = new Dimension ( 300, 100 );
+		Dimension frameSize = new Dimension ( 500, 100 );
 	    setBounds ( ss.width / 2 - frameSize.width / 2, 
                     ss.height / 2 - frameSize.height / 2,
                     frameSize.width, frameSize.height );
@@ -73,7 +74,7 @@ public class MainFrame extends JFrame
 		{
 			super("Output");					
 			
-			Dimension frameSize = new Dimension ( 500, 120 );
+			Dimension frameSize = new Dimension ( 600, 120 );
 		    setBounds ( ss.width / 2 - frameSize.width / 2, 
 	                    ss.height / 2 - frameSize.height / 2,
 	                    frameSize.width, frameSize.height );
@@ -81,6 +82,7 @@ public class MainFrame extends JFrame
 			item3 = new JButton("Output");
 			item4 = new JButton("Simplified Output");
 			item8 = new JButton("Generate Output File");
+			item9 = new JButton("Generate Image");
 			item5 = new JLabel("Chosen File: " + str.toString());
 			item6 = new JPanel();
 			item7 = new JPanel(new GridBagLayout());
@@ -92,6 +94,7 @@ public class MainFrame extends JFrame
 			item7.add(item3,c);
 			item7.add(item4);
 			item7.add(item8,c);
+			item7.add(item9,c);
 			
 			add(item6,BorderLayout.NORTH);
 			add(item7,BorderLayout.SOUTH);
@@ -100,6 +103,7 @@ public class MainFrame extends JFrame
 			item3.addActionListener(hnd2);
 			item4.addActionListener(hnd2);
 			item8.addActionListener(hnd2);
+			item9.addActionListener(hnd2);
 		}
 	}
 	
@@ -139,12 +143,6 @@ public class MainFrame extends JFrame
 					}
 					  					
 					simplifiedOutput = circuit.generateSimplifiedOutput();
-					try 
-					{
-						circuit.drawCircuit(output, "output_normal.png");
-						circuit.drawCircuit(simplifiedOutput, "output_simplified.png");
-					}
-					catch (Exception e) {}
 					
 					SeconderyFrame sec = new SeconderyFrame(path);
 	    			  
@@ -208,7 +206,14 @@ public class MainFrame extends JFrame
 				JOptionPane.showMessageDialog(null, "Output file was generated in application directory");
 			}
 			
-			
+			else if(event.getSource()==item9) {
+				try {
+					Circuit circuit = new Circuit();
+					circuit.drawCircuit(output, "output_normal.png");
+					circuit.drawCircuit(simplifiedOutput, "output_simplified.png");
+				}
+				catch (Exception e) {}
+			}
 		}
 	}
 	
