@@ -18,4 +18,3 @@ GATE: OR(Q1,Q0,W)
 FF: D(D2,Q2)
 FF: D(D1,Q1)
 FF: D(D0,Q0)
-
