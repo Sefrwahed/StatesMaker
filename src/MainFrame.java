@@ -26,13 +26,15 @@ public class MainFrame extends JFrame
 	private StringBuilder path;
 	private String output;
 	private String simplifiedOutput;
-	
+	private Circuit circuit;
 	private JButton item1;	
 	private JButton item2;
 	private JButton item3;	
 	private JButton item4;
 	private JButton item8;
 	private JButton item9;
+	private JButton item10;
+	private JButton item11;
 	private JLabel  item5;
 	private JPanel  item6;
 	private JPanel  item7;
@@ -53,13 +55,15 @@ public class MainFrame extends JFrame
 		
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );				
 		GridBagConstraints c = new GridBagConstraints();
-		c.insets = new Insets(10, 5, 10, 10);
+		c.insets = new Insets(0, 5, 0, 5);
+		c.ipadx = 20;
+		c.ipady = 20;
 		
 		item1 = new JButton("Import input file");
 		add(item1,c);
 		
 		item2 = new JButton("About Authors");
-		add(item2);
+		add(item2,c);
 		
 		Handler hnd1 = new Handler();
 		item1.addActionListener(hnd1);
@@ -73,12 +77,12 @@ public class MainFrame extends JFrame
 		public SeconderyFrame(StringBuilder str, boolean are_equal)
 		{
 			super("Output");					
-			int w;
+			int h;
 			if (are_equal)
-				w = 400;
+				h = 160;
 			else
-				w = 700;
-			Dimension frameSize = new Dimension ( w, 120 );
+				h = 260;
+			Dimension frameSize = new Dimension ( 450, h );
 		    setBounds ( ss.width / 2 - frameSize.width / 2, 
 	                    ss.height / 2 - frameSize.height / 2,
 	                    frameSize.width, frameSize.height );
@@ -87,20 +91,48 @@ public class MainFrame extends JFrame
 			item4 = new JButton("Simplified Output");
 			item8 = new JButton("Generate Output File");
 			item9 = new JButton("Generate Simplified Output File");
+			item10 = new JButton("Generate Output State Diagram");
+			item11 = new JButton("Generate Simplified Output State Diagram");
 			item5 = new JLabel("Chosen File: " + str.toString());
 			item6 = new JPanel();
 			item7 = new JPanel(new GridBagLayout());
 			
 			GridBagConstraints c = new GridBagConstraints();
-			c.insets = new Insets(10,10,10,10);
+			c.gridx = 0;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.ipadx = 10;
+			c.ipady = 10;
 			
+			
+			c.gridy = 1;
 			item6.add(item5,c);
+			
+			c.gridy = 2;
 			item7.add(item3,c);
-			if (!are_equal)
-				item7.add(item4);
-			item7.add(item8,c);
-			if (!are_equal)
+			
+			if (!are_equal){
+				
+				c.gridy = 3;
+				item7.add(item4,c);
+						
+				c.gridy = 4;
+				item7.add(item8,c);
+				
+				c.gridy = 5;
+				item7.add(item10,c);
+			
+				c.gridy = 6;
 				item7.add(item9,c);
+				
+				c.gridy = 7;
+				item7.add(item11,c);
+			}else{
+				c.gridy = 3;
+				item7.add(item8,c);
+				
+				c.gridy = 4;
+				item7.add(item10,c);
+			}
 			
 			add(item6,BorderLayout.NORTH);
 			add(item7,BorderLayout.SOUTH);
@@ -110,6 +142,8 @@ public class MainFrame extends JFrame
 			item4.addActionListener(hnd2);
 			item8.addActionListener(hnd2);
 			item9.addActionListener(hnd2);
+			item10.addActionListener(hnd2);
+			item11.addActionListener(hnd2);
 		}
 	}
 	
@@ -137,7 +171,7 @@ public class MainFrame extends JFrame
 					TextInputReader tir = new TextInputReader(path.toString());
 						
 						
-					Circuit circuit = new Circuit();
+					circuit = new Circuit();
 					circuit.createCicuit(tir);
 					try
 					{
@@ -187,12 +221,10 @@ public class MainFrame extends JFrame
 			{
 				try
 				{
-					PrintWriter writer = new PrintWriter("Output.txt", "UTF-8");
-					writer.print(output);
-					/*
-					String[] out = output.split("\n");
-					String[] simpOut = simplifiedOutput.split("\n");
+					PrintWriter writer = new PrintWriter("Output.txt", "UTF-8");					
 					
+					String[] out = output.split("\n");
+									
 					writer.println("Normal Output:");
 					writer.println();
 					
@@ -201,15 +233,6 @@ public class MainFrame extends JFrame
 						writer.println(out[i]);							
 					}
 					
-					writer.println("------------------------");
-					writer.println("Simplified Output:");
-					writer.println();
-					
-					for (int i = 0; i < simpOut.length; i++)
-					{
-						writer.println(simpOut[i]);							
-					}
-					*/
 					writer.close();
 				} catch (FileNotFoundException e)
 				{				
@@ -225,7 +248,14 @@ public class MainFrame extends JFrame
 				try
 				{
 					PrintWriter writer = new PrintWriter("SimplifiedOutput.txt", "UTF-8");
-					writer.print(simplifiedOutput);
+					String[] simpOut = simplifiedOutput.split("\n");
+					writer.println("Simplified Output:");
+					writer.println();
+					
+					for (int i = 0; i < simpOut.length; i++)
+					{
+						writer.println(simpOut[i]);							
+					}
 					writer.close();
 				} catch (FileNotFoundException e)
 				{				
@@ -235,6 +265,24 @@ public class MainFrame extends JFrame
 					e.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Simplified Output file was generated in application directory");
+			}
+			
+			else if(event.getSource() == item10) {
+				try
+				{
+					circuit.drawCircuit(output,"output.pdf");
+					JOptionPane.showMessageDialog(null, "Output state diagram file was generated in application directory");
+				} 
+				catch (Exception e) {}				
+			}
+			
+			else if(event.getSource() == item11) {
+				try
+				{
+					circuit.drawCircuit(simplifiedOutput,"Simplified_output.pdf");
+					JOptionPane.showMessageDialog(null, "Simplified Output state diagram file was generated in application directory");
+				} 
+				catch (Exception e) {}	
 			}
 			
 		}
