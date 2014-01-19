@@ -663,11 +663,11 @@ public class Circuit
 			gates.add(and);
 		}
 	  
-	  public void drawCircuit(String output, String output_png) {
+	  public void drawCircuit(String output, String output_file) {
 		  GraphViz gv = new GraphViz();
 	      gv.addln(gv.start_graph());
 	      gv.addln("rankdir=LR;");
-	      String[] lines = output.split(System.getProperty("line.separator"));
+	      String[] lines = output.split("\n");
 	      int max_lines = lines.length;
 	      Matcher matcher = Pattern.compile("STATES_NO:([0-9]+)").matcher(lines[0]);
 	      matcher.find();
@@ -708,8 +708,9 @@ public class Circuit
 	    	  }
 	      }
 	      gv.addln(gv.end_graph());
-	      
-	      File out = new File(output_png);
-	      gv.writeGraphToFile( gv.getGraph( gv.getDotSource(), "png" ), out );
+	      File out = new File(output_file);
+	      String dotSource = gv.getDotSource();
+	      byte[] image = gv.getGraph(dotSource, "pdf");
+	      gv.writeGraphToFile( image, out );
 	  }
 }

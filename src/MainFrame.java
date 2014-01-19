@@ -26,13 +26,15 @@ public class MainFrame extends JFrame
 	private StringBuilder path;
 	private String output;
 	private String simplifiedOutput;
-	
+	private Circuit circuit;
 	private JButton item1;	
 	private JButton item2;
 	private JButton item3;	
 	private JButton item4;
 	private JButton item8;
 	private JButton item9;
+	private JButton item10;
+	private JButton item11;
 	private JLabel  item5;
 	private JPanel  item6;
 	private JPanel  item7;
@@ -46,7 +48,7 @@ public class MainFrame extends JFrame
 		super("States Creator");		
 		setLayout(new GridBagLayout());
 		
-		Dimension frameSize = new Dimension ( 500, 100 );
+		Dimension frameSize = new Dimension ( 300, 100 );
 	    setBounds ( ss.width / 2 - frameSize.width / 2, 
                     ss.height / 2 - frameSize.height / 2,
                     frameSize.width, frameSize.height );
@@ -75,9 +77,9 @@ public class MainFrame extends JFrame
 			super("Output");					
 			int w;
 			if (are_equal)
-				w = 400;
+				w = 500;
 			else
-				w = 700;
+				w = 1100;
 			Dimension frameSize = new Dimension ( w, 120 );
 		    setBounds ( ss.width / 2 - frameSize.width / 2, 
 	                    ss.height / 2 - frameSize.height / 2,
@@ -87,6 +89,8 @@ public class MainFrame extends JFrame
 			item4 = new JButton("Simplified Output");
 			item8 = new JButton("Generate Output File");
 			item9 = new JButton("Generate Simplified Output File");
+			item10 = new JButton("Generate Output State Diagram");
+			item11 = new JButton("Generate Simplified Output State Diagram");
 			item5 = new JLabel("Chosen File: " + str.toString());
 			item6 = new JPanel();
 			item7 = new JPanel(new GridBagLayout());
@@ -99,8 +103,12 @@ public class MainFrame extends JFrame
 			if (!are_equal)
 				item7.add(item4);
 			item7.add(item8,c);
+			item7.add(item10,c);
 			if (!are_equal)
-				item7.add(item9,c);			
+			{
+				item7.add(item9,c);
+				item7.add(item11,c);
+			}
 			add(item6,BorderLayout.NORTH);
 			add(item7,BorderLayout.SOUTH);
 			
@@ -109,6 +117,8 @@ public class MainFrame extends JFrame
 			item4.addActionListener(hnd2);
 			item8.addActionListener(hnd2);
 			item9.addActionListener(hnd2);
+			item10.addActionListener(hnd2);
+			item11.addActionListener(hnd2);
 		}
 	}
 	
@@ -136,7 +146,7 @@ public class MainFrame extends JFrame
 					TextInputReader tir = new TextInputReader(path.toString());
 						
 						
-					Circuit circuit = new Circuit();
+					circuit = new Circuit();
 					circuit.createCicuit(tir);
 					try
 					{
@@ -234,6 +244,24 @@ public class MainFrame extends JFrame
 					e.printStackTrace();
 				}
 				JOptionPane.showMessageDialog(null, "Simplified Output file was generated in application directory");
+			}
+			
+			else if(event.getSource() == item10) {
+				try
+				{
+					circuit.drawCircuit(output,"output.pdf");
+					JOptionPane.showMessageDialog(null, "Output state diagram file was generated in application directory");
+				} 
+				catch (Exception e) {}				
+			}
+			
+			else if(event.getSource() == item11) {
+				try
+				{
+					circuit.drawCircuit(simplifiedOutput,"Simplified_output.pdf");
+					JOptionPane.showMessageDialog(null, "Simplified Output state diagram file was generated in application directory");
+				} 
+				catch (Exception e) {}	
 			}
 			
 		}
