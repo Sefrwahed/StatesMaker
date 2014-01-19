@@ -70,11 +70,15 @@ public class MainFrame extends JFrame
 	{						
 		private static final long serialVersionUID = 1L;
 
-		public SeconderyFrame(StringBuilder str)
+		public SeconderyFrame(StringBuilder str, boolean are_equal)
 		{
 			super("Output");					
-			
-			Dimension frameSize = new Dimension ( 600, 120 );
+			int w;
+			if (are_equal)
+				w = 400;
+			else
+				w = 700;
+			Dimension frameSize = new Dimension ( w, 120 );
 		    setBounds ( ss.width / 2 - frameSize.width / 2, 
 	                    ss.height / 2 - frameSize.height / 2,
 	                    frameSize.width, frameSize.height );
@@ -82,7 +86,7 @@ public class MainFrame extends JFrame
 			item3 = new JButton("Output");
 			item4 = new JButton("Simplified Output");
 			item8 = new JButton("Generate Output File");
-			item9 = new JButton("Generate Image");
+			item9 = new JButton("Generate Simplified Output File");
 			item5 = new JLabel("Chosen File: " + str.toString());
 			item6 = new JPanel();
 			item7 = new JPanel(new GridBagLayout());
@@ -92,10 +96,11 @@ public class MainFrame extends JFrame
 			
 			item6.add(item5,c);
 			item7.add(item3,c);
-			item7.add(item4);
+			if (!are_equal)
+				item7.add(item4);
 			item7.add(item8,c);
-			item7.add(item9,c);
-			
+			if (!are_equal)
+				item7.add(item9,c);			
 			add(item6,BorderLayout.NORTH);
 			add(item7,BorderLayout.SOUTH);
 			
@@ -142,10 +147,17 @@ public class MainFrame extends JFrame
 						e.printStackTrace();
 					}
 					  					
-					simplifiedOutput = circuit.generateSimplifiedOutput();
-					
-					SeconderyFrame sec = new SeconderyFrame(path);
-	    			  
+					simplifiedOutput = circuit.generateSimplifiedOutput();										
+					boolean are_equal;
+					if (simplifiedOutput.length() == output.length()) {
+						are_equal = true;
+					} 
+					else 
+					{
+						are_equal = false;
+					}
+					SeconderyFrame sec = new SeconderyFrame(path,are_equal);
+	    			
 	    			sec.setResizable(false);    			 
 					sec.setVisible(true);
 					  
@@ -174,7 +186,9 @@ public class MainFrame extends JFrame
 			{
 				try
 				{
-					PrintWriter writer = new PrintWriter("Output.txt", "UTF-8");											    
+					PrintWriter writer = new PrintWriter("Output.txt", "UTF-8");
+					writer.print(output);
+					/*
 					String[] out = output.split("\n");
 					String[] simpOut = simplifiedOutput.split("\n");
 					
@@ -194,7 +208,7 @@ public class MainFrame extends JFrame
 					{
 						writer.println(simpOut[i]);							
 					}
-					
+					*/
 					writer.close();
 				} catch (FileNotFoundException e)
 				{				
@@ -207,13 +221,21 @@ public class MainFrame extends JFrame
 			}
 			
 			else if(event.getSource()==item9) {
-				try {
-					Circuit circuit = new Circuit();
-					circuit.drawCircuit(output, "output_normal.png");
-					circuit.drawCircuit(simplifiedOutput, "output_simplified.png");
+				try
+				{
+					PrintWriter writer = new PrintWriter("SimplifiedOutput.txt", "UTF-8");
+					writer.print(simplifiedOutput);
+					writer.close();
+				} catch (FileNotFoundException e)
+				{				
+					e.printStackTrace();
+				} catch (UnsupportedEncodingException e)
+				{					
+					e.printStackTrace();
 				}
-				catch (Exception e) {}
+				JOptionPane.showMessageDialog(null, "Simplified Output file was generated in application directory");
 			}
+			
 		}
 	}
 	
