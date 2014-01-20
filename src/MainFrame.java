@@ -13,7 +13,6 @@ import java.io.UnsupportedEncodingException;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -35,7 +34,6 @@ public class MainFrame extends JFrame
 	private JButton item9;
 	private JButton item10;
 	private JButton item11;
-	private JLabel  item5;
 	private JPanel  item7;
 	
 	
@@ -91,19 +89,14 @@ public class MainFrame extends JFrame
 			item8 = new JButton("Generate Output File");
 			item9 = new JButton("Generate Simplified Output File");
 			item10 = new JButton("Generate Output State Diagram");
-			item11 = new JButton("Generate Simplified Output State Diagram");
-			item5 = new JLabel("Chosen File: " + str.toString());
+			item11 = new JButton("Generate Simplified Output State Diagram");			
 			item7 = new JPanel(new GridBagLayout());
 			
 			GridBagConstraints c = new GridBagConstraints();
 			c.gridx = 0;
 			c.fill = GridBagConstraints.HORIZONTAL;
 			c.ipadx = 10;
-			c.ipady = 10;
-			
-			
-			//c.gridy = 1;
-			//item7.add(item5,c);
+			c.ipady = 10;			
 			
 			c.gridy = 2;
 			item7.add(item3,c);
