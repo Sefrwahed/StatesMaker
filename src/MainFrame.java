@@ -36,7 +36,6 @@ public class MainFrame extends JFrame
 	private JButton item10;
 	private JButton item11;
 	private JLabel  item5;
-	private JPanel  item6;
 	private JPanel  item7;
 	
 	
@@ -76,7 +75,7 @@ public class MainFrame extends JFrame
 
 		public SeconderyFrame(StringBuilder str, boolean are_equal)
 		{
-			super("Output");					
+			super(str.toString());					
 			int h;
 			if (are_equal)
 				h = 160;
@@ -94,7 +93,6 @@ public class MainFrame extends JFrame
 			item10 = new JButton("Generate Output State Diagram");
 			item11 = new JButton("Generate Simplified Output State Diagram");
 			item5 = new JLabel("Chosen File: " + str.toString());
-			item6 = new JPanel();
 			item7 = new JPanel(new GridBagLayout());
 			
 			GridBagConstraints c = new GridBagConstraints();
@@ -104,8 +102,8 @@ public class MainFrame extends JFrame
 			c.ipady = 10;
 			
 			
-			c.gridy = 1;
-			item6.add(item5,c);
+			//c.gridy = 1;
+			//item7.add(item5,c);
 			
 			c.gridy = 2;
 			item7.add(item3,c);
@@ -134,8 +132,7 @@ public class MainFrame extends JFrame
 				item7.add(item10,c);
 			}
 			
-			add(item6,BorderLayout.NORTH);
-			add(item7,BorderLayout.SOUTH);
+			add(item7,BorderLayout.CENTER);
 			
 			Handler hnd2 = new Handler();
 			item3.addActionListener(hnd2);
