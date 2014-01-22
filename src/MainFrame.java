@@ -36,6 +36,9 @@ public class MainFrame extends JFrame
 	private JButton item11;
 	private JPanel  item7;
 	
+	// To check if there's an error in the circuit
+	public static boolean failed = false;
+	
 	
 	private Dimension ss = Toolkit.getDefaultToolkit ().getScreenSize ();
 	
@@ -154,8 +157,10 @@ public class MainFrame extends JFrame
 				chooser.addChoosableFileFilter(txtType);
 	
 				if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
-				{				  
-					//system.out.println("File URL : " + chooser.getSelectedFile());
+				{
+					//  The circuit is yet to be analyzed so it's not faield yet
+					failed = false;
+					
 					path.append(chooser.getSelectedFile());
 					  
 					TextInputReader tir = new TextInputReader(path.toString());
@@ -277,5 +282,14 @@ public class MainFrame extends JFrame
 			
 		}
 	}
-	
+
+	public static void showError(String errorMessage)
+	{
+		if (failed == false)
+		{
+			JOptionPane.showMessageDialog(null, errorMessage);
+			failed = true;
+		}
+
+	}
 }

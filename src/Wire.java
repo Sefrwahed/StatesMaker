@@ -34,7 +34,7 @@ public class Wire
 			return this.sourceGate.getValue();
 		} catch (Exception e)
 		{
-			System.out.print("Error, Wire " + this.name + " failed to calculate its value. Please check its connections\n");
+			MainFrame.showError("Error, Wire " + this.name + " failed to calculate its value. Please check its connections\n");
 			return false;
 		}
 	}

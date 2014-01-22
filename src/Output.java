@@ -24,7 +24,7 @@ public class Output extends Gate
 			return inputWire.getValue();
 		} catch (Exception e)
 		{
-			System.out.print("Error, Output " + this.name + " failed to calculate its value, please check its connections\n");
+			MainFrame.showError("Error, Output " + this.name + " failed to calculate its value, please check its connections\n");
 			return false;
 		}
 	}

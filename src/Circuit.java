@@ -262,7 +262,7 @@ public class Circuit
 //    	flipflops.get(0).setCurrentState(false);
 //		flipflops.get(1).setCurrentState(false);
 //		inputs.get(0).setValue(true);
-//		System.out.println("J 1" + flipflops.get(1).getNextState());
+//		MainFrame.showError("J 1" + flipflops.get(1).getNextState());
 
 	}
 	
@@ -308,7 +308,7 @@ public class Circuit
 		else if (stringToWire.containsKey(in1))
 			jk.connectInput(stringToWire.get(in1));
 		else
-			System.out.println("Error, the wire " + in1 + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + in1 + " isn't in the circuit");
 	
 		// Connect the Second input
 		// Check if the in2 wire is an input
@@ -329,7 +329,7 @@ public class Circuit
 		else if (stringToWire.containsKey(in2))
 			jk.connectInput(stringToWire.get(in2));
 		else
-			System.out.println("Error, the wire " + in2 + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + in2 + " isn't in the circuit");
 		
 		// Connect the output
 		// Check if the in wire is an output
@@ -343,7 +343,7 @@ public class Circuit
 		else if (stringToWire.containsKey(out))
 			jk.connectOutput(stringToWire.get(out));
 		else
-			System.out.println("Error, the wire " + out + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + out + " isn't in the circuit");
 	
 		flipflops.add(jk);
 	}
@@ -370,7 +370,7 @@ public class Circuit
 		else if (stringToWire.containsKey(in1))
 			sr.connectInput(stringToWire.get(in1));
 		else
-			System.out.println("Error, the wire " + in1 + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + in1 + " isn't in the circuit");
 	
 		// Connect the Second input
 		// Check if the in2 wire is an input
@@ -391,7 +391,7 @@ public class Circuit
 		else if (stringToWire.containsKey(in2))
 			sr.connectInput(stringToWire.get(in2));
 		else
-			System.out.println("Error, the wire " + in2 + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + in2 + " isn't in the circuit");
 		
 		// Connect the output
 		// Check if the in wire is an output
@@ -405,7 +405,7 @@ public class Circuit
 		else if (stringToWire.containsKey(out))
 			sr.connectOutput(stringToWire.get(out));
 		else
-			System.out.println("Error, the wire " + out + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + out + " isn't in the circuit");
 	
 		flipflops.add(sr);
 	}
@@ -432,7 +432,7 @@ public class Circuit
 		else if (stringToWire.containsKey(in1))
 			d.connectInput(stringToWire.get(in1));
 		else
-			System.out.println("Error, the wire " + in1 + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + in1 + " isn't in the circuit");
 	
 		
 		// Connect the output
@@ -447,7 +447,7 @@ public class Circuit
 		else if (stringToWire.containsKey(out))
 			d.connectOutput(stringToWire.get(out));
 		else
-			System.out.println("Error, the wire " + out + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + out + " isn't in the circuit");
 	
 		flipflops.add(d);
 	}
@@ -474,7 +474,7 @@ public class Circuit
 		else if (stringToWire.containsKey(in1))
 			t.connectInput(stringToWire.get(in1));
 		else
-			System.out.println("Error, the wire " + in1 + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + in1 + " isn't in the circuit");
 	
 		
 		// Connect the output
@@ -489,7 +489,7 @@ public class Circuit
 		else if (stringToWire.containsKey(out))
 			t.connectOutput(stringToWire.get(out));
 		else
-			System.out.println("Error, the wire " + out + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + out + " isn't in the circuit");
 	
 		flipflops.add(t);
 	}
@@ -517,7 +517,7 @@ public class Circuit
 		else if (stringToWire.containsKey(in1))
 			or.connectInput(stringToWire.get(in1));
 		else
-			System.out.println("Error, the wire " + in1 + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + in1 + " isn't in the circuit");
 	
 		// Connect the Second input
 		// Check if the in2 wire is an input
@@ -538,7 +538,7 @@ public class Circuit
 		else if (stringToWire.containsKey(in2))
 			or.connectInput(stringToWire.get(in2));
 		else
-			System.out.println("Error, the wire " + in2 + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + in2 + " isn't in the circuit");
 		
 		// Connect the output
 		// Check if the in wire is an output
@@ -552,7 +552,7 @@ public class Circuit
 		else if (stringToWire.containsKey(out))
 			or.connectOutput(stringToWire.get(out));
 		else
-			System.out.println("Error, the wire " + out + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + out + " isn't in the circuit");
 				
 		
 		gates.add(or);
@@ -581,7 +581,7 @@ public class Circuit
 		else if (stringToWire.containsKey(in))
 			inverter.connectInput(stringToWire.get(in));
 		else
-			System.out.println("Error, the wire " + in + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + in + " isn't in the circuit");
 		
 		// Connect the output
 		// Check if the in wire is an output
@@ -595,7 +595,7 @@ public class Circuit
 		else if (stringToWire.containsKey(out))
 			inverter.connectOutput(stringToWire.get(out));
 		else
-			System.out.println("Error, the wire " + out + " isn't in the circuit");
+			MainFrame.showError("Error, the wire " + out + " isn't in the circuit");
 		
 		gates.add(inverter);
 	}
@@ -623,7 +623,7 @@ public class Circuit
 			else if (stringToWire.containsKey(in1))
 				and.connectInput(stringToWire.get(in1));
 			else
-				System.out.println("Error, the wire " + in1 + " isn't in the circuit");
+				MainFrame.showError("Error, the wire " + in1 + " isn't in the circuit");
 		
 			// Connect the Second input
 			// Check if the in2 wire is an input
@@ -644,7 +644,7 @@ public class Circuit
 			else if (stringToWire.containsKey(in2))
 				and.connectInput(stringToWire.get(in2));
 			else
-				System.out.println("Error, the wire " + in2 + " isn't in the circuit");
+				MainFrame.showError("Error, the wire " + in2 + " isn't in the circuit");
 			
 			// Connect the output
 			// Check if the in wire is an output
@@ -658,7 +658,7 @@ public class Circuit
 			else if (stringToWire.containsKey(out))
 				and.connectOutput(stringToWire.get(out));
 			else
-				System.out.println("Error, the wire " + out + " isn't in the circuit");
+				MainFrame.showError("Error, the wire " + out + " isn't in the circuit");
 					
 			gates.add(and);
 		}
