@@ -17,7 +17,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-
+/**
+ * The main Frame class of the application
+ * 
+ * @author M.Anwer, A.Aly, A.Abo ElHamaid
+ */
 public class MainFrame extends JFrame
 {
 	private static final long serialVersionUID = 1L;

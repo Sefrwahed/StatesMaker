@@ -1,8 +1,9 @@
 
 
 /**
- * @author A.Alfy
  * implements a NOT gate
+ * 
+ * @author A.Alfy
  */
 public class Inverter extends Gate
 {

@@ -1,8 +1,9 @@
 
 
 /**
+ * TFlipFlop Class
+ * 
  * @author A.abd el megiid
- *
  */
 public class TFlipFlop extends FlipFlop
 {

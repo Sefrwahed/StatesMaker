@@ -6,8 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author A.Aly
  * The circuit which contains the flipflops, internals, inputs, outputs and internals
+ * 
+ * @author A.Aly
  */
 public class Circuit
 {

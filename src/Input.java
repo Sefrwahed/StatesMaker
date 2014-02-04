@@ -1,7 +1,8 @@
 
 /**
+ * Gate Class
+ * 
  * @author A.Aly
- *
  */
 public class Input extends Gate
 {

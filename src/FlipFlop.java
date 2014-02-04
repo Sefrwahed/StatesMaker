@@ -1,7 +1,8 @@
 
 /**
- * @author A.Aly
  * Implements the flip flop
+ * 
+ * @author A.Aly
  */
 public class FlipFlop extends Gate
 {

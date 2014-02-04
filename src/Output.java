@@ -1,8 +1,9 @@
 
 
 /**
- * @author A.Aly
  * The output gate
+ * 
+ * @author A.Aly
  */
 public class Output extends Gate
 {

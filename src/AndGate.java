@@ -2,8 +2,9 @@
 
 
 /**
- * @author  A.Alfy
  * The AND gate
+ * 
+ * @author  A.Alfy
  */
 public class AndGate extends Gate
 {

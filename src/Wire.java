@@ -1,12 +1,13 @@
 /**
- * @author A.Aly
  * Implements an internal of the circuit which connects gates, outputs, inputs, flipflops
+ * 
+ * @author A.Aly
  */
 public class Wire
 {
 	// Variables
-	private Gate sourceGate;                     // The wire takes it value from the source gate
-	private Gate destinationGate;          // the destination gate gets its value from the wire
+	private Gate sourceGate;          // The wire takes it value from the source gate
+	private Gate destinationGate;     // the destination gate gets its value from the wire
 	public String name;
 	
 	// Setters and getters

@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * @author M.Anwer
  * The class that parses the inputs and stores it as strings to be used to build the circuit
+ * 
+ * @author M.Anwer
  */
 public class TextInputReader
 {

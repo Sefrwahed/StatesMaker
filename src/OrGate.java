@@ -1,6 +1,8 @@
+
 /**
- * @author A.Alfy
  * Implements the OR gate
+ * 
+ * @author A.Alfy
  */
 public class OrGate extends Gate
 {

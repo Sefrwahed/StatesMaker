@@ -2,8 +2,9 @@ import javax.swing.UIManager;
 
 
 /**
- * @author A.Abd el Megeed, A.Aly, A.alfy, M.Anwer
  * The main class of the application
+ * 
+ * @author A.Abd el Megeed, A.Aly, A.alfy, M.Anwer
  */
 public class MainClass
 {	

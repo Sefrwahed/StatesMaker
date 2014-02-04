@@ -2,8 +2,9 @@
 import java.util.ArrayList;
 
 /**
- * @author A.Aly
  * The super class for and, not, or gates , flip flops, inputs and outputs
+ * 
+ * @author A.Aly
  */
 public class Gate
 {

@@ -1,8 +1,9 @@
 
 
 /**
- * @author A.Abd el megid
  * Implements the JK flip flop
+ * 
+ * @author A.Abd el megid
  */
 public class JKFlipFlop extends FlipFlop
 {

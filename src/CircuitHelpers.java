@@ -2,8 +2,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * @author A.Aly
  * Helper functions useful for calculating the output of the circuit
+ * 
+ * @author A.Aly
  */
 public class CircuitHelpers
 {

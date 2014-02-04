@@ -1,7 +1,8 @@
 
 /**
- * @author A.Abd el megiid
  * Implement the D flip flop
+ * 
+ * @author A.Abd el megiid
  */
 public class DFlipFlop extends FlipFlop
 {

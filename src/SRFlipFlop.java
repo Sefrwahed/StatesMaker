@@ -1,8 +1,9 @@
 
 
 /**
+ * SR FlipFlop Class
+ * 
  * @author A.abd el megiid
- *
  */
 public class SRFlipFlop extends FlipFlop
 {
