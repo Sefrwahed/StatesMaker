@@ -1,3 +1,5 @@
+Simplified Output:
+
 STATES_NO:3
 States:S0 S1 S2 
 STATE_DIAGRAM: 

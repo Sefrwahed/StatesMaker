@@ -1,6 +1,8 @@
+Normal Output:
+
 STATES_NO:4
 STATES: S0 S1 S2 S3 
-STATE_DIAGRAM: 
+STATE_DIAGRAM:
 S0:
 X=0 -> S0
 X=1 -> S1

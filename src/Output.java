@@ -1,5 +1,3 @@
-
-
 /**
  * The output gate
  * 
@@ -13,9 +11,8 @@ public class Output extends Gate
 		super();
 		this.name = name;
 	}
-	
-	// Methods
 
+	// Methods
 
 	public boolean getValue()
 	{
@@ -25,7 +22,10 @@ public class Output extends Gate
 			return inputWire.getValue();
 		} catch (Exception e)
 		{
-			MainFrame.showError("Error, Output " + this.name + " failed to calculate its value, please check its connections\n");
+			MainFrame
+					.showError("Error, Output "
+							+ this.name
+							+ " failed to calculate its value, please check its connections\n");
 			return false;
 		}
 	}

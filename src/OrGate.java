@@ -1,4 +1,3 @@
-
 /**
  * Implements the OR gate
  * 
@@ -12,8 +11,8 @@ public class OrGate extends Gate
 	 */
 	public boolean getValue()
 	{
-		return getInputWires().get(0).getValue() || getInputWires().get(1).getValue() ;
+		return getInputWires().get(0).getValue()
+				|| getInputWires().get(1).getValue();
 	}
-	
-	
+
 }

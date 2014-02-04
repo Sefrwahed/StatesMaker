@@ -1,45 +1,54 @@
 /**
- * Implements an internal of the circuit which connects gates, outputs, inputs, flipflops
+ * Implements an internal of the circuit which connects gates, outputs, inputs,
+ * flipflops
  * 
  * @author A.Aly
  */
 public class Wire
 {
 	// Variables
-	private Gate sourceGate;          // The wire takes it value from the source gate
-	private Gate destinationGate;     // the destination gate gets its value from the wire
+	private Gate sourceGate; // The wire takes it value from the source gate
+	private Gate destinationGate; // the destination gate gets its value from
+									// the wire
 	public String name;
-	
+
 	// Setters and getters
 	public Gate getSourceGate()
 	{
 		return sourceGate;
 	}
+
 	public void setSourceGate(Gate sourceGate)
 	{
 		this.sourceGate = sourceGate;
 	}
+
 	public Gate getDestinationGate()
 	{
 		return destinationGate;
 	}
+
 	public void setDestinationGate(Gate destinationGate)
 	{
 		this.destinationGate = destinationGate;
 	}
+
 	public boolean getValue()
 	{
-	
+
 		try
 		{
 			return this.sourceGate.getValue();
 		} catch (Exception e)
 		{
-			MainFrame.showError("Error, Wire " + this.name + " failed to calculate its value. Please check its connections\n");
+			MainFrame
+					.showError("Error, Wire "
+							+ this.name
+							+ " failed to calculate its value. Please check its connections\n");
 			return false;
 		}
 	}
-	
+
 	// Constructors
 	public Wire()
 	{
@@ -47,6 +56,7 @@ public class Wire
 		this.destinationGate = null;
 		this.name = "";
 	}
+
 	public Wire(String name)
 	{
 		this.sourceGate = null;
@@ -54,8 +64,4 @@ public class Wire
 		this.name = name;
 	}
 
-	
-	
-	}
-	
-
+}

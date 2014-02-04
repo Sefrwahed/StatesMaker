@@ -1,0 +1,32 @@
+Simplified Output:
+
+STATES_NO:9
+States:S0 S12 S13 S14 S30 S4 S52 S63 S8 
+STATE_DIAGRAM: 
+S0:
+A=0 -> S0,Z=0 ,W=0 
+A=1 -> S8,Z=0 ,W=1 
+S12:
+A=0 -> S52,Z=0 ,W=0 
+A=1 -> S30,Z=0 ,W=1 
+S13:
+A=0 -> S52,Z=0 ,W=0 
+A=1 -> S30,Z=0 ,W=1 
+S14:
+A=0 -> S52,Z=0 ,W=1 
+A=1 -> S63,Z=1 ,W=1 
+S30:
+A=0 -> S52,Z=0 ,W=1 
+A=1 -> S63,Z=1 ,W=1 
+S4:
+A=0 -> S4,Z=0 ,W=0 
+A=1 -> S14,Z=0 ,W=1 
+S52:
+A=0 -> S4,Z=0 ,W=1 
+A=1 -> S13,Z=1 ,W=1 
+S63:
+A=0 -> S52,Z=0 ,W=1 
+A=1 -> S63,Z=1 ,W=1 
+S8:
+A=0 -> S4,Z=0 ,W=0 
+A=1 -> S12,Z=0 ,W=1 

@@ -1,4 +1,3 @@
-
 /**
  * Gate Class
  * 
@@ -14,11 +13,12 @@ public class Input extends Gate
 	{
 		return value;
 	}
+
 	public void setValue(boolean value)
 	{
 		this.value = value;
 	}
-	
+
 	// Constructors
 	public Input(String name)
 	{
